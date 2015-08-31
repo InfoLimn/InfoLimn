@@ -12,7 +12,7 @@ var app = angular.module('infolimn', [ 'checklist-model' ]);
 app.controller('imageView', function($scope, $filter) {
 	$scope.responseData = responseData;
 	$scope.selectedCategories = $scope.responseData.categories.slice(0);
-	$scope.selectedImages = $scope.responseData.images.slice(0);
+	$scope.selectedImages = $scope.responseData.infolimns.slice(0);
 	$scope.checkAll = function() {
 		$scope.selectedCategories = angular
 				.copy($scope.responseData.categories);
@@ -22,8 +22,7 @@ app.controller('imageView', function($scope, $filter) {
 	};
 	$scope.getCategories = function() {
 		return $scope.responseData.categories;
-	}, 
-	$scope.check = function(value, checked) {
+	}, $scope.check = function(value, checked) {
 		var idx = $scope.selectedCategories.indexOf(value);
 		if (idx >= 0 && !checked) {
 			$scope.selectedCategories.splice(idx, 1);
@@ -37,60 +36,123 @@ app.controller('imageView', function($scope, $filter) {
 		}
 		$scope.filteredImages();
 	};
-$scope.test = "{category: 'Politics'}";
+	$scope.test = "{category: 'C00002'}";
 	$scope.filteredImages = function(image) {
-        return $filter("filter")($scope.selectedImages, function(image){
-        	console.log($scope.selectedCategories+'  ===   '+image.category +'  ===   '+ ($scope.selectedCategories.indexOf(image.category) !== -1));
-        	if($scope.selectedCategories.indexOf(image.category) !== -1){
-        		return '{category: '+image.category+'}';
-        	}
-        	
-        });
+		return $filter("filter")
+				(
+						$scope.selectedImages,
+						function(image) {
+							console.log($scope.selectedCategories
+									+ '  ===   '
+									+ image.category
+									+ '  ===   '
+									+ ($scope.selectedCategories
+											.indexOf(image.category) !== -1));
+							if ($scope.selectedCategories
+									.indexOf(image.category) !== -1) {
+								return '{category: ' + image.category + '}';
+							}
+
+						});
 	};
 });
 
-
-var responseData = {
-	"categories" : [ 'Politics', 'Science', 'Cinema', 'Others' ],
-	"images" : [ {
-		"url" : 'resources/images/pictterSample.png',
-		"category" : 'Politics',
-		"timeStamp" : 12345
+var responseDataMock = {
+	"categories" : [ "Cinema", "Music", "Others", "Politics", "Science",
+			"Sports", "Technology" ],
+	"infolimns" : [ {
+		"Description" : "Hello Pictter. This is Infolimn Version",
+		"Category" : "C00001",
+		"UpLoadedTimeStamp" : "1000-01-01 00:00:00.0",
+		"InfoLimnId" : "IL00000001",
+		"Title" : "Pictter",
+		"URL" : "resources/images/pictterSample.png"
 	}, {
-		"url" : 'resources/images/pictterSample.png',
-		"category" : 'Politics',
-		"timeStamp" : 12346
+		"Description" : "Hey Pictter 2. This is Infolimn Version",
+		"Category" : "C00002",
+		"UpLoadedTimeStamp" : "1000-01-01 00:00:01.0",
+		"InfoLimnId" : "IL00000002",
+		"Title" : "Pictter 2",
+		"URL" : "resources/images/pictterSample.png"
 	}, {
-		"url" : 'resources/images/pictterSample.png',
-		"category" : 'Politics',
-		"timeStamp" : 12346
+		"Description" : "Hello Pictter. This is Infolimn Version",
+		"Category" : "C00003",
+		"UpLoadedTimeStamp" : "1000-01-01 00:00:02.0",
+		"InfoLimnId" : "IL00000003",
+		"Title" : "Pictter",
+		"URL" : "resources/images/pictterSample.png"
 	}, {
-		"url" : 'resources/images/pictterSample.png',
-		"category" : 'Cinema',
-		"timeStamp" : 12347
+		"Description" : "Hello Pictter. This is Infolimn Version",
+		"Category" : "C00004",
+		"UpLoadedTimeStamp" : "1000-01-01 00:00:03.0",
+		"InfoLimnId" : "IL00000004",
+		"Title" : "Pictter",
+		"URL" : "resources/images/pictterSample.png"
 	}, {
-		"url" : 'resources/images/pictterSample.png',
-		"category" : 'Others',
-		"timeStamp" : 12348
+		"Description" : "Hello Pictter. This is Infolimn Version",
+		"Category" : "C00005",
+		"UpLoadedTimeStamp" : "1000-01-01 00:00:04.0",
+		"InfoLimnId" : "IL00000005",
+		"Title" : "Pictter",
+		"URL" : "resources/images/pictterSample.png"
 	}, {
-		"url" : 'resources/images/pictterSample.png',
-		"category" : 'Cinema',
-		"timeStamp" : 12349
+		"Description" : "Hello Pictter. This is Infolimn Version",
+		"Category" : "C00006",
+		"UpLoadedTimeStamp" : "1000-01-01 00:00:05.0",
+		"InfoLimnId" : "IL00000006",
+		"Title" : "Pictter",
+		"URL" : "resources/images/pictterSample.png"
 	}, {
-		"url" : 'resources/images/pictterSample.png',
-		"category" : 'Science',
-		"timeStamp" : 12350
+		"Description" : "Hello Pictter. This is Infolimn Version",
+		"Category" : "C00007",
+		"UpLoadedTimeStamp" : "1000-01-01 00:00:06.0",
+		"InfoLimnId" : "IL00000007",
+		"Title" : "Pictter",
+		"URL" : "resources/images/pictterSample.png"
 	}, {
-		"url" : 'resources/images/pictterSample.png',
-		"category" : 'Science',
-		"timeStamp" : 12360
+		"Description" : "Hey Pictter 2. This is Infolimn Version",
+		"Category" : "C00001",
+		"UpLoadedTimeStamp" : "1000-01-01 00:00:07.0",
+		"InfoLimnId" : "IL00000008",
+		"Title" : "Pictter",
+		"URL" : "resources/images/pictterSample.png"
 	}, {
-		"url" : 'resources/images/pictterSample.png',
-		"category" : 'Science',
-		"timeStamp" : 12370
-	}, ]
+		"Description" : "Hey Pictter 2. This is Infolimn Version",
+		"Category" : "C00001",
+		"UpLoadedTimeStamp" : "1000-01-01 00:00:08.0",
+		"InfoLimnId" : "IL00000009",
+		"Title" : "Pictter",
+		"URL" : "resources/images/pictterSample.png"
+	}, {
+		"Description" : "Hey Pictter 2. This is Infolimn Version",
+		"Category" : "C00002",
+		"UpLoadedTimeStamp" : "1000-01-01 00:00:09.0",
+		"InfoLimnId" : "IL00000010",
+		"Title" : "Pictter",
+		"URL" : "resources/images/pictterSample.png"
+	}, {
+		"Description" : "Hey Pictter 2. This is Infolimn Version",
+		"Category" : "C00002",
+		"UpLoadedTimeStamp" : "1000-01-01 00:00:10.0",
+		"InfoLimnId" : "IL00000011",
+		"Title" : "Pictter",
+		"URL" : "resources/images/pictterSample.png"
+	}, {
+		"Description" : "Hey Pictter 2. This is Infolimn Version",
+		"Category" : "C00004",
+		"UpLoadedTimeStamp" : "1000-01-01 00:00:11.0",
+		"InfoLimnId" : "IL00000012",
+		"Title" : "Pictter",
+		"URL" : "resources/images/pictterSample.png"
+	}, {
+		"Description" : "Hey Pictter 2. This is Infolimn Version",
+		"Category" : "C00007",
+		"UpLoadedTimeStamp" : "1000-01-01 00:00:12.0",
+		"InfoLimnId" : "IL00000013",
+		"Title" : "Pictter",
+		"URL" : "resources/images/pictterSample.png"
+	} ]
 };
-
 
 angular
 		.module('checklist-model', [])

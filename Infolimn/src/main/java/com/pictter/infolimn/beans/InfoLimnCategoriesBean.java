@@ -1,20 +1,23 @@
 package com.pictter.infolimn.beans;
 
+import java.util.ArrayList;
+
 public class InfoLimnCategoriesBean {
 	
-	String[] categories;
+	ArrayList<String> categories;
 
 	/**
 	 * @return the categories
 	 */
-	public String[] getCategories() {
+	public ArrayList<String> getCategories() {
 		return categories;
 	}
 
 	/**
 	 * @param categories the categories to set
 	 */
-	public void setCategories(String[] categories) {
+	public void setCategories(ArrayList<String> categories) {
 		this.categories = categories;
 	}
+
 }

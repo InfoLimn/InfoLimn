@@ -126,8 +126,6 @@ ul li {
 <body ng-app="infolimn" ng-controller="imageView">
 	<!-----start-main---->
 
-	${infolimnJSON}
-
 	<div class="main">
 		<div class="navBarOutter">
 			<div class="navBarInner">
@@ -158,9 +156,9 @@ ul li {
 					<div class="col-xs-2 letter-box"
 						ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3, $index + 4, $index + 5]"
 						ng-if="selectedImages[i] != null">
-						<img src="{{selectedImages[i].url}}"
-							alt="{{selectedImages[i].category}}"
-							id="pictterId_{{selectedImages[i].timeStamp}}"
+						<img src="{{selectedImages[i].URL}}"
+							alt="{{selectedImages[i].Category}}"
+							id="pictterId_{{selectedImages[i].UpLoadedTimeStamp}}"
 							class="img-responsive" />
 					</div>
 				</div>
@@ -168,5 +166,8 @@ ul li {
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+	var responseData = ${infolimnJSON};
+</script>
 <script type="text/javascript" src="resources/scripts/main.js"></script>
 </html>
