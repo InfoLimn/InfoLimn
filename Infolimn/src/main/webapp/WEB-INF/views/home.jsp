@@ -144,7 +144,7 @@ ul li {
 								ng-change="check(categoryType, checked)" />{{categoryType}}</label></li>
 					</ul>
 				</div>
-				{{selectedCategories}}
+
 			</div>
 			<!--  <div ng-repeat="image in selectedImages | filter: {category: 'Cinema'}">
 				{{image.category}}

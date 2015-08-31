@@ -26,18 +26,14 @@ app.controller('imageView', function($scope, $filter) {
 		var idx = $scope.selectedCategories.indexOf(value);
 		if (idx >= 0 && !checked) {
 			$scope.selectedCategories.splice(idx, 1);
-			console.log('top   ' + $scope.selectedCategories);
-			console.log('top   ' + $scope.responseData.categories);
 		}
 		if (idx < 0 && checked) {
 			$scope.selectedCategories.push(value);
-			console.log('bottom   ' + $scope.selectedCategories);
-			console.log('bottom   ' + $scope.responseData.categories);
 		}
 		$scope.filteredImages();
 	};
-	$scope.test = "{category: 'C00002'}";
-	$scope.filteredImages = function(image) {
+
+	$scope.filteredImages = function() {
 		return $filter("filter")
 				(
 						$scope.selectedImages,
